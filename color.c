@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mousemove.c                                        :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 13:06:56 by tashiget          #+#    #+#             */
-/*   Updated: 2024/04/25 13:06:56 by tashiget         ###   ########.fr       */
+/*   Created: 2024/05/10 12:04:23 by tashiget          #+#    #+#             */
+/*   Updated: 2024/05/10 12:04:23 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mousemove(int mouse, int x, int y, t_viwinfo *viw)
+unsigned int	colorset(double n)
 {
-	(void)x;
-	(void)y;
-	if (mouse == 4)
-		viw->scal += 1;
-	else if (mouse == 5)
-		viw->scal -= 1;
-	calculation(viw);
-	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n", viw->pos[0], viw->pos[1], viw->scal);
-	return (0);
+	unsigned int	color;
+	int				red;
+	int				green;
+	int				blue;
+
+	n = (ACC - n) * 360 / ACC;
+	red = 128 * (cos((n + ARG) * M_PI / 180) * n / 360 + 1);
+	green = 128 * (sin((n - 30 + ARG) * M_PI / 180) * n / 360 + 1);
+	blue = 128 * (sin((n + 210 + ARG) * M_PI / 180) * n / 360 + 1);
+	color = 256 * 256 * (unsigned int)red + 256 * (unsigned int)green + (unsigned int)blue;
+	return (color);
 }

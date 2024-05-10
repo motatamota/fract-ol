@@ -23,23 +23,36 @@
 # define SIZE 1000
 # define ACC 100
 # define DIV 10
+# define MOVE 100
+# define SCALE 1.5
+# define ARG 240
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct	s_viwinfo {
 	void	*mlx;
 	void	*win;
 	int		scal;
-	int		pos[2];
+	double	pos[2];
 	int		n;
 	int		m;
 	double	x;
 	double	y;
-	double	a;
-	double	b;
 	double	math;
+	t_data	img;
 }				t_viwinfo;
 
-int		keymove(int	keycode, t_viwinfo *viw);
-int		mousemove(int mouse, int x, int y, t_viwinfo *viw);
-void	cir(t_viwinfo *viw);
+int				keymove(int	keycode, t_viwinfo *viw);
+int				mousemove(int mouse, int x, int y, t_viwinfo *viw);
+void			cir(t_viwinfo *viw);
+void			calculation(t_viwinfo *viw);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+unsigned int	colorset(double n);
 
 #endif
