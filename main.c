@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/10 19:49:58 by tashiget          #+#    #+#             */
+/*   Updated: 2024/05/10 19:49:58 by tashiget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	cir(t_viwinfo *viw)
@@ -7,22 +19,24 @@ void	cir(t_viwinfo *viw)
 	double	a;
 	double	b;
 
-	p = 0;
+	p = -1;
 	viw->x = 0;
 	viw->y = 0;
-	a = (((double)viw->n - SIZE / 2) / pow(SCALE, viw->scal) + (double)viw->pos[0] * MOVE + SIZE / 2) * viw->math - 2.5;
-	b = (((double)viw->m - SIZE / 2) / pow(SCALE, viw->scal) + (double)viw->pos[1] * MOVE + SIZE / 2) * viw->math - 2;
-	while (p < ACC)
+	a = ((viw->n - SIZE / 2) / pow(SCALE, viw->scal) + (double)viw->pos[0] * \
+			(double)MOVE + (double)SIZE / 2) * viw->math - 2.5;
+	b = ((viw->m - SIZE / 2) / pow(SCALE, viw->scal) + (double)viw->pos[1] * \
+			(double)MOVE + (double)SIZE / 2) * viw->math - 2.0;
+	while (++p < ACC)
 	{
-		if (viw->x * viw->x + viw->y * viw->y > 2)
+		if (viw->x * viw->x + viw->y * viw->y >= 2)
 		{
-			my_mlx_pixel_put(&(viw->img), viw->n, viw->m, colorset((double)p, viw));
+			my_mlx_pixel_put(&(viw->img), viw->n, viw->m,
+				colorset((double)p, viw));
 			return ;
 		}
 		x = viw->x;
 		viw->x = viw->x * viw->x - viw->y * viw->y + a;
 		viw->y = 2 * x * viw->y + b;
-		p++;
 	}
 	my_mlx_pixel_put(&(viw->img), viw->n, viw->m, 0);
 }
@@ -55,25 +69,26 @@ void	initialize(t_viwinfo *viw)
 void	mandel(t_viwinfo *viw)
 {
 	calculation(viw);
-	mlx_hook(viw->win, 2, 1L<<0, keymove, viw);
-	mlx_hook(viw->win, 4, 1L<<2, mousemove, viw);
+	mlx_hook(viw->win, 2, 1L << 0, keymove, viw);
+	mlx_hook(viw->win, 4, 1L << 2, mousemove, viw);
 }
 
-int main()
+int	main(void)
 {
-	t_viwinfo viw;
-	t_data	img;
+	t_viwinfo	viw;
+	t_data		img;
 
 	initialize(&viw);
 	viw.mlx = mlx_init();
 	viw.win = mlx_new_window(viw.mlx, SIZE, SIZE, "fract-ol");
 	img.img = mlx_new_image(viw.mlx, SIZE, SIZE);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
 	viw.math = (double)4 / SIZE;
 	viw.img = img;
 	if (1)
 		mandel(&viw);
 	mlx_put_image_to_window(viw.mlx, viw.win, img.img, 0, 0);
 	mlx_loop(viw.mlx);
-	return 0;
+	return (0);
 }

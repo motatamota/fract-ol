@@ -20,9 +20,10 @@ unsigned int	colorset(double n, t_viwinfo *viw)
 	int				blue;
 
 	n = (ACC - n) * 360 / ACC;
-	red = 128 * (cos((n + ARG + viw->arg) * M_PI / 180) * n / 360 + 1);
-	green = 128 * (sin((n - 30 + ARG + viw->arg) * M_PI / 180) * n / 360 + 1);
-	blue = 128 * (sin((n + 210 + ARG + viw->arg) * M_PI / 180) * n / 360 + 1);
-	color = 256 * 256 * (unsigned int)red + 256 * (unsigned int)green + (unsigned int)blue;
+	red = 127 * (cos((n + ARG + viw->arg) * M_PI / 240) + 1);
+	green = 127 * (sin((n - 30 + ARG + viw->arg) * M_PI / 240) + 1);
+	blue = 127 * (sin((n + 210 + ARG + viw->arg) * M_PI / 240) + 1);
+	color = 256 * 256 * (unsigned int)red + 256
+		* (unsigned int)green + (unsigned int)blue;
 	return (color);
 }
