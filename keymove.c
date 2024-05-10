@@ -22,6 +22,7 @@ int	keymove(int	keycode, t_viwinfo *viw)
 		viw->pos[0] += 1 / pow(SCALE, viw->scal);
 	else if (keycode == 65364)
 		viw->pos[1] += 1 / pow(SCALE, viw->scal);
+	viw->arg += 20;
 	calculation(viw);
 	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
 	printf("position: x=%f, y=%f\nscale: %d\n", viw->pos[0], viw->pos[1], viw->scal);

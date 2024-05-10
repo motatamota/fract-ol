@@ -45,6 +45,7 @@ typedef struct	s_viwinfo {
 	double	x;
 	double	y;
 	double	math;
+	int		arg;
 	t_data	img;
 }				t_viwinfo;
 
@@ -53,6 +54,6 @@ int				mousemove(int mouse, int x, int y, t_viwinfo *viw);
 void			cir(t_viwinfo *viw);
 void			calculation(t_viwinfo *viw);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-unsigned int	colorset(double n);
+unsigned int	colorset(double n, t_viwinfo *viw);
 
 #endif

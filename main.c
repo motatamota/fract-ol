@@ -16,7 +16,7 @@ void	cir(t_viwinfo *viw)
 	{
 		if (viw->x * viw->x + viw->y * viw->y > 2)
 		{
-			my_mlx_pixel_put(&(viw->img), viw->n, viw->m, colorset((double)p));
+			my_mlx_pixel_put(&(viw->img), viw->n, viw->m, colorset((double)p, viw));
 			return ;
 		}
 		x = viw->x;
@@ -49,6 +49,7 @@ void	initialize(t_viwinfo *viw)
 	viw->scal = 0;
 	viw->x = 0;
 	viw->y = 0;
+	viw->arg = 0;
 }
 
 void	mandel(t_viwinfo *viw)
