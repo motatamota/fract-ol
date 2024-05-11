@@ -15,9 +15,9 @@
 unsigned int	colorset(double n, t_viwinfo *viw)
 {
 	unsigned int	color;
-	int				red;
-	int				green;
-	int				blue;
+	double			red;
+	double			green;
+	double			blue;
 
 	n = (ACC - n) * 360 / ACC;
 	red = 127 * (cos((n + ARG + viw->arg) * M_PI / 240) + 1);

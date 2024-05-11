@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mousemove.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 13:06:56 by tashiget          #+#    #+#             */
-/*   Updated: 2024/04/25 13:06:56 by tashiget         ###   ########.fr       */
+/*   Created: 2024/03/20 01:26:06 by tashiget          #+#    #+#             */
+/*   Updated: 2024/03/20 01:26:06 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int	mousemove(int mouse, int x, int y, t_viwinfo *viw)
+int	ft_memcmp(const void *buf1, const void *buf2, size_t count)
 {
-	(void)x;
-	(void)y;
-	if (mouse == 4)
-		viw->scal += 1;
-	else if (mouse == 5)
-		viw->scal -= 1;
-	viw->arg += 10;
-	calculation(viw);
-	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n",
-		viw->pos[0], viw->pos[1], viw->scal);
+	size_t			k;
+	unsigned char	*box;
+	unsigned char	*bot;
+
+	box = (unsigned char *)buf1;
+	bot = (unsigned char *)buf2;
+	k = 0;
+	while (k < count)
+	{
+		if (*(box + k) != *(bot + k))
+			return (*(box + k) - *(bot + k));
+		k++;
+	}
 	return (0);
 }

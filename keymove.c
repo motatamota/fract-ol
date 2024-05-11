@@ -27,7 +27,7 @@ int	keymove(int keycode, t_viwinfo *viw)
 		mlx_destroy_window(viw->mlx, viw->win);
 		exit(0);
 	}
-	viw->arg += 20;
+	viw->arg += 10;
 	calculation(viw);
 	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
 	printf("position: x=%f, y=%f\nscale: %d\n",

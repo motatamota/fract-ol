@@ -17,6 +17,8 @@
 # include <math.h>
 # include <limits.h>
 # include <mlx.h>
+# include "libft.h"
+# include "ft_printf.h"
 
 # define SIZE 1000
 # define ACC 150

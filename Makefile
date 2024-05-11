@@ -8,13 +8,21 @@ LIBX_FLAGS	=	-lm -lmlx -framework OpenGL -framework AppKit
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAG) $(OBJS) $(LIBX_FLAGS) -o $(NAME)
+	$(CC) $(FLAG) $(OBJS) printf/libftprintf.a $(LIBX_FLAGS) -o $(NAME)
 
-%.o: %.c
+%.o: %.c printf/libftprintf.a
 	$(CC) $(FLAG) -c $< -o $@
+
+printf/libftprintf.a:
+	make -C printf
+
+bonus: all
+	touch bonus
 
 clean:
 	$(RM) $(OBJS)
+	make -C printf fclean
+	rm -f bonus;
 
 fclean: clean
 	$(RM) $(NAME)

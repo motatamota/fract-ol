@@ -28,7 +28,7 @@ void	cir(t_viwinfo *viw)
 			(double)MOVE + (double)SIZE / 2) * viw->math - 2.0;
 	while (++p < ACC)
 	{
-		if (viw->x * viw->x + viw->y * viw->y >= 2)
+		if (viw->x * viw->x + viw->y * viw->y >= 6)
 		{
 			my_mlx_pixel_put(&(viw->img), viw->n, viw->m,
 				colorset((double)p, viw));
@@ -73,11 +73,26 @@ void	mandel(t_viwinfo *viw)
 	mlx_hook(viw->win, 4, 1L << 2, mousemove, viw);
 }
 
-int	main(void)
+int	ft_strcmp(char *dest, char *src)
+{
+	while (*dest - *src == 0 && *dest && *src)
+	{
+		dest++;
+		src++;
+	}
+	return (*dest - *src);
+}
+
+int	main(int ac, char **av)
 {
 	t_viwinfo	viw;
 	t_data		img;
 
+	if (ac == 1 || ac > 4)
+	{
+		ft_printf("Check the arguments...\n");
+		return (1);
+	}
 	initialize(&viw);
 	viw.mlx = mlx_init();
 	viw.win = mlx_new_window(viw.mlx, SIZE, SIZE, "fract-ol");
@@ -86,8 +101,14 @@ int	main(void)
 			&img.line_length, &img.endian);
 	viw.math = (double)4 / SIZE;
 	viw.img = img;
-	if (1)
+	if (!ft_strcmp("m", *(av + 1)) && ac == 2)
 		mandel(&viw);
+	else if (!ft_strcmp("j", *(av + 1)))
+		julia(&viw, ac, av);
+	// else if (!ft_strcmp("f", *(av + 1)) && ac == 2)
+	// 	fire(&viw);
+	else
+		ft_printf("Try again...\n");
 	mlx_put_image_to_window(viw.mlx, viw.win, img.img, 0, 0);
 	mlx_loop(viw.mlx);
 	return (0);

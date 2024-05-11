@@ -2,3 +2,5 @@ fract-ol
 *.o
 keyconfig
 key.c
+*/libft.a
+*/libftprintf.a

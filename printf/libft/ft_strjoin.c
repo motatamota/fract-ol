@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mousemove.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 13:06:56 by tashiget          #+#    #+#             */
-/*   Updated: 2024/04/25 13:06:56 by tashiget         ###   ########.fr       */
+/*   Created: 2024/03/20 01:26:35 by tashiget          #+#    #+#             */
+/*   Updated: 2024/03/20 01:26:35 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int	mousemove(int mouse, int x, int y, t_viwinfo *viw)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	(void)x;
-	(void)y;
-	if (mouse == 4)
-		viw->scal += 1;
-	else if (mouse == 5)
-		viw->scal -= 1;
-	viw->arg += 10;
-	calculation(viw);
-	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n",
-		viw->pos[0], viw->pos[1], viw->scal);
-	return (0);
+	size_t	len_1;
+	size_t	len_2;
+	char	*box;
+
+	if (s1 == 0 || s2 == 0)
+		return (0);
+	len_1 = ft_strlen(s1);
+	len_2 = ft_strlen(s2);
+	box = (char *)malloc(sizeof(char) * (len_1 + len_2 + 1));
+	if (box == 0)
+		return (0);
+	ft_memcpy(box, s1, len_1);
+	ft_memcpy(box + len_1, s2, len_2);
+	*(box + len_1 + len_2) = '\0';
+	return (box);
 }

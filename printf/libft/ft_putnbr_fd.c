@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mousemove.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 13:06:56 by tashiget          #+#    #+#             */
-/*   Updated: 2024/04/25 13:06:56 by tashiget         ###   ########.fr       */
+/*   Created: 2024/03/20 02:52:39 by tashiget          #+#    #+#             */
+/*   Updated: 2024/03/20 02:52:39 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int	mousemove(int mouse, int x, int y, t_viwinfo *viw)
+static void	set(long k, int fd)
 {
-	(void)x;
-	(void)y;
-	if (mouse == 4)
-		viw->scal += 1;
-	else if (mouse == 5)
-		viw->scal -= 1;
-	viw->arg += 10;
-	calculation(viw);
-	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n",
-		viw->pos[0], viw->pos[1], viw->scal);
-	return (0);
+	char	c;
+
+	if (k < 10)
+	{
+		c = k + '0';
+		write(fd, &c, 1);
+		return ;
+	}
+	set(k / 10, fd);
+	c = k % 10 + '0';
+	write(fd, &c, 1);
 }
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	k;
+
+	k = (long)n;
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		k = -k;
+	}
+	set(k, fd);
+}
+
+// int	main()
+// {
+// 	ft_putnbr_fd(-2147483648, 1);
+// }
