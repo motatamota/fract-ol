@@ -29,7 +29,8 @@
 # define SCALE 1.8
 # define ARG 240
 
-typedef struct s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -37,7 +38,8 @@ typedef struct s_data {
 	int		endian;
 }				t_data;
 
-typedef struct s_viwinfo {
+typedef struct s_viwinfo
+{
 	void	*mlx;
 	void	*win;
 	int		scal;
