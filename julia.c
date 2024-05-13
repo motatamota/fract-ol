@@ -6,7 +6,7 @@
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 14:36:34 by tashiget          #+#    #+#             */
-/*   Updated: 2024/05/13 10:35:08 by tashiget         ###   ########.fr       */
+/*   Updated: 2024/05/13 11:01:58 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,6 @@ void	juliaset(t_viwinfo *viw)
 
 void	julia(t_viwinfo *viw, int ac, char **av)
 {
-	if (ac == 3)
-	{
-		ft_printf("Error: number of unauthorized arguments\n");
-		return ;
-	}
 	if (ac == 2)
 	{
 		viw->j_a = -0.2;

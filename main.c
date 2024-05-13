@@ -73,22 +73,12 @@ void	mandel(t_viwinfo *viw)
 	mlx_hook(viw->win, 4, 1L << 2, mousemove, viw);
 }
 
-int	ft_strcmp(char *dest, char *src)
-{
-	while (*dest - *src == 0 && *dest && *src)
-	{
-		dest++;
-		src++;
-	}
-	return (*dest - *src);
-}
-
 int	main(int ac, char **av)
 {
 	t_viwinfo	viw;
 	t_data		img;
 
-	if (ac == 1 || ac > 4)
+	if (ac == 1 || ac == 3 || ac > 4 || checker(ac, av))
 	{
 		ft_printf("Check the arguments...\n");
 		return (1);
@@ -105,10 +95,8 @@ int	main(int ac, char **av)
 		mandel(&viw);
 	else if (!ft_strcmp("j", *(av + 1)))
 		julia(&viw, ac, av);
-	// else if (!ft_strcmp("f", *(av + 1)) && ac == 2)
-	// 	fire(&viw);
-	else
-		ft_printf("Try again...\n");
+	else if (!ft_strcmp("b", *(av + 1)) && ac == 2)
+		burning(&viw);
 	mlx_put_image_to_window(viw.mlx, viw.win, img.img, 0, 0);
 	mlx_loop(viw.mlx);
 	return (0);

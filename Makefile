@@ -1,5 +1,5 @@
 NAME		=	fract-ol
-SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c julia.c
+SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c julia.c burning.c util.c
 FLAG		=	-Wall -Wextra -Werror
 OBJS 		=	$(SRCS:.c=.o)
 CC			=	cc

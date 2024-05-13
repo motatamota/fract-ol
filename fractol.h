@@ -63,5 +63,11 @@ void			julia(t_viwinfo *viw, int ac, char **av);
 void			j_calculation(t_viwinfo *viw, double a, double b);
 int				j_keymove(int keycode, t_viwinfo *viw);
 int				j_mousemove(int mouse, int x, int y, t_viwinfo *viw);
+void			b_calculation(t_viwinfo *viw);
+void			burning(t_viwinfo *viw);
+int				b_mousemove(int mouse, int x, int y, t_viwinfo *viw);
+int				b_keymove(int keycode, t_viwinfo *viw);
+int				ft_strcmp(char *dest, char *src);
+int				checker(int ac, char **av);
 
 #endif
