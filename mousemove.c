@@ -27,3 +27,19 @@ int	mousemove(int mouse, int x, int y, t_viwinfo *viw)
 		viw->pos[0], viw->pos[1], viw->scal);
 	return (0);
 }
+
+int	j_mousemove(int mouse, int x, int y, t_viwinfo *viw)
+{
+	(void)x;
+	(void)y;
+	if (mouse == 4)
+		viw->scal += 1;
+	else if (mouse == 5)
+		viw->scal -= 1;
+	viw->arg += 10;
+	j_calculation(viw, viw->j_a, viw->j_b);
+	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
+	printf("position: x=%f, y=%f\nscale: %d\n",
+		viw->pos[0], viw->pos[1], viw->scal);
+	return (0);
+}

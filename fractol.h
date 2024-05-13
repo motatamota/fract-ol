@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <math.h>
 # include <limits.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
 # include <mlx.h>
 # include "libft.h"
 # include "ft_printf.h"
@@ -44,6 +46,8 @@ typedef struct s_viwinfo {
 	int		m;
 	double	x;
 	double	y;
+	double	j_a;
+	double	j_b;
 	double	math;
 	int		arg;
 	t_data	img;
@@ -55,5 +59,9 @@ void			cir(t_viwinfo *viw);
 void			calculation(t_viwinfo *viw);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 unsigned int	colorset(double n, t_viwinfo *viw);
+void			julia(t_viwinfo *viw, int ac, char **av);
+void			j_calculation(t_viwinfo *viw, double a, double b);
+int				j_keymove(int keycode, t_viwinfo *viw);
+int				j_mousemove(int mouse, int x, int y, t_viwinfo *viw);
 
 #endif

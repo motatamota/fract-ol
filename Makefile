@@ -1,9 +1,10 @@
 NAME		=	fract-ol
-SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c
+SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c julia.c
 FLAG		=	-Wall -Wextra -Werror
 OBJS 		=	$(SRCS:.c=.o)
 CC			=	cc
-LIBX_FLAGS	=	-lm -lmlx -framework OpenGL -framework AppKit
+# LIBX_FLAGS	=	-lm -lmlx -framework OpenGL -framework AppKit
+LIBX_FLAGS	=	-lm -lmlx_Linux -lXext -lX11
 
 all: $(NAME)
 
