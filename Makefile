@@ -16,7 +16,7 @@ $(NAME): $(OBJS)
 printf/libftprintf.a:
 	make -C printf
 
-bonus: all
+bonus: $(NAME)
 	touch bonus
 
 clean:
