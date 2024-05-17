@@ -101,3 +101,8 @@ int	main(int ac, char **av)
 	mlx_loop(viw.mlx);
 	return (0);
 }
+
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q fract-ol");
+// }
