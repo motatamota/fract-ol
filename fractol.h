@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <limits.h>
+// #include <stdio.h>
 // #include <X11/X.h>
 // #include <X11/keysym.h>
 # include <mlx.h>
@@ -70,5 +71,7 @@ int				b_mousemove(int mouse, int x, int y, t_viwinfo *viw);
 int				b_keymove(int keycode, t_viwinfo *viw);
 int				ft_strcmp(char *dest, char *src);
 int				checker(int ac, char **av);
+void			puterror(void);
+int				breakwin(void);
 
 #endif

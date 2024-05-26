@@ -70,6 +70,7 @@ void	mandel(t_viwinfo *viw)
 {
 	calculation(viw);
 	mlx_hook(viw->win, 2, 1L << 0, keymove, viw);
+	mlx_hook(viw->win, 17, 0, breakwin, NULL);
 	mlx_hook(viw->win, 4, 1L << 2, mousemove, viw);
 }
 
@@ -80,7 +81,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1 || ac == 3 || ac > 4 || checker(ac, av))
 	{
-		ft_printf("Check the arguments...\n");
+		puterror();
 		return (1);
 	}
 	initialize(&viw);

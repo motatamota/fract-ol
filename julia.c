@@ -6,7 +6,7 @@
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 14:36:34 by tashiget          #+#    #+#             */
-/*   Updated: 2024/05/16 20:38:51 by tashiget         ###   ########.fr       */
+/*   Updated: 2024/05/26 23:32:39 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,12 @@ void	juliaset(t_viwinfo *viw)
 {
 	j_calculation(viw, viw->j_a, viw->j_b);
 	mlx_hook(viw->win, 2, 1L << 0, j_keymove, viw);
+	mlx_hook(viw->win, 17, 0, breakwin, NULL);
 	mlx_hook(viw->win, 4, 1L << 2, j_mousemove, viw);
 }
 
 void	julia(t_viwinfo *viw, int ac, char **av)
 {
-	if (ac == 2)
-	{
-		viw->j_a = -0.2;
-		viw->j_b = 0.7;
-	}
 	if (ac == 4)
 	{
 		viw->j_a = atof(*(av + 2));

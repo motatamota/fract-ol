@@ -1,9 +1,10 @@
 NAME		=	fractol
-SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c julia.c burning.c util.c
+SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c julia.c burning.c util.c main2.c
 FLAG		=	-Wall -Wextra -Werror
 OBJS 		=	$(SRCS:.c=.o)
 CC			=	cc
 LIBX_FLAGS	=	-lm -lmlx -framework OpenGL -framework AppKit
+# LIBX_FLAGS	=	-lmlx_Linux -lXext -lX11 -lm
 
 all: $(NAME)
 

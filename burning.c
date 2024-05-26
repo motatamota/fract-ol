@@ -60,5 +60,6 @@ void	burning(t_viwinfo *viw)
 {
 	b_calculation(viw);
 	mlx_hook(viw->win, 2, 1L << 0, b_keymove, viw);
+	mlx_hook(viw->win, 17, 0, breakwin, NULL);
 	mlx_hook(viw->win, 4, 1L << 2, b_mousemove, viw);
 }
