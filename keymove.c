@@ -30,8 +30,6 @@ int	keymove(int keycode, t_viwinfo *viw)
 	viw->arg += 10;
 	calculation(viw);
 	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n",
-		viw->pos[0], viw->pos[1], viw->scal);
 	return (0);
 }
 
@@ -53,8 +51,6 @@ int	j_keymove(int keycode, t_viwinfo *viw)
 	viw->arg += 10;
 	j_calculation(viw, viw->j_a, viw->j_b);
 	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n",
-		viw->pos[0], viw->pos[1], viw->scal);
 	return (0);
 }
 
@@ -76,8 +72,6 @@ int	b_keymove(int keycode, t_viwinfo *viw)
 	viw->arg += 10;
 	b_calculation(viw);
 	mlx_put_image_to_window(viw->mlx, viw->win, (viw->img).img, 0, 0);
-	printf("position: x=%f, y=%f\nscale: %d\n",
-		viw->pos[0], viw->pos[1], viw->scal);
 	return (0);
 }
 

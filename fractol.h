@@ -13,7 +13,6 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include <stdlib.h>
-# include <stdio.h>
 # include <math.h>
 # include <limits.h>
 // #include <X11/X.h>
