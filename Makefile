@@ -3,10 +3,13 @@ SRCS		=	main.c keymove.c mousemove.c mypixel.c color.c julia.c burning.c util.c 
 FLAG		=	-Wall -Wextra -Werror
 OBJS 		=	$(SRCS:.c=.o)
 CC			=	cc
-LIBX_FLAGS	=	-lm -lmlx -framework OpenGL -framework AppKit
-# LIBX_FLAGS	=	-lmlx_Linux -lXext -lX11 -lm
+# LIBX_FLAGS	=	-lm -lmlx -framework OpenGL -framework AppKit
+LIBX_FLAGS	=	-lmlx_Linux -lXext -lX11 -lm
 
 all: $(NAME)
+
+key: key.c
+	$(CC) $(FLAG) key.c $(LIBX_FLAGS) -o key
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAG) $(OBJS) printf/libftprintf.a $(LIBX_FLAGS) -o $(NAME)
@@ -26,6 +29,7 @@ clean:
 	rm -f bonus;
 
 fclean: clean
+	rm key
 	$(RM) $(NAME)
 
 re: fclean all

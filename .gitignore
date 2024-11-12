@@ -1,6 +1,5 @@
 fract-ol
 *.o
-key.c
 */libft.a
 */libftprintf.a
 a.out
